@@ -30,9 +30,13 @@ type
     frxrprt1: TfrxReport;
     frxdbdtst1: TfrxDBDataset;
     ds1: TDataSource;
+    procedure bersih;
+    procedure posisiawal;
     procedure btn1Click(Sender: TObject);
     procedure btn2Click(Sender: TObject);
     procedure btn3Click(Sender: TObject);
+    procedure btn4Click(Sender: TObject);
+    procedure btn5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,6 +44,7 @@ type
   end;
 
 var
+  id : string;
   Form5: TForm5;
 
 implementation
@@ -60,10 +65,10 @@ end;
 
 procedure TForm5.btn2Click(Sender: TObject);
 begin
-          if edt1.Text =''then
+if edt1.Text =''then
 begin
   ShowMessage('NAMA POINT TIDAK BOLEH KOSONG');
-  end else
+end else
 if edt2.Text =''then
 begin
   ShowMessage('TOTAL TIDAK BOLEH KOSONG');
@@ -87,7 +92,7 @@ ShowMessage('Data Berhasil Disimpan');
 posisiawal;
 end;
 
-procedure TForm4.btn3Click(Sender: TObject);
+procedure TForm4btn3Click(Sender: TObject);
 begin
 if (edt1.Text= '')or(edt2.Text= '')or(edt3.Text= '') then
 begin
@@ -128,5 +133,29 @@ begin
   end;
 end;
 
+
+procedure TForm5.btn4Click(Sender: TObject);
+begin
+   if MessageDlg('Apakah Anda Yakin Menghapus Data Ini?',mtWarning,[mbYes,mbNo],0)= mryes then
+begin
+  zqry1.SQL.Clear;
+  zqry1.SQL.Add('delete from tabel_poin where id ="'+id+'"');
+  zqry1.ExecSQL;
+  zqry1.SQL.Clear;
+  zqry1.SQL.Add('select * from tabel_poin');
+  zqry1.Open;
+  ShowMessage('Data Berhasil Dihapus');
+  posisiawal;
+end else
+begin
+  ShowMessage('Data Batal Dihapus');
+  posisiawal;
+end;
+end;
+
+procedure TForm5.btn5Click(Sender: TObject);
+begin
+bersih;
+end;
 
 end.
