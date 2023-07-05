@@ -34,6 +34,7 @@ type
     btn6: TButton;
     dbgrd1: TDBGrid;
     procedure btn1Click(Sender: TObject);
+    procedure btn2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -61,12 +62,52 @@ btn1.Enabled := False;
   edt5.Enabled := True;
   edt6.Enabled := True;
   edt7.Enabled := True;
-  edt8.Enabled := True;
-  edt9.Enabled := True;
-  edt10.Enabled := True;
-  edt11.Enabled := True;
-  edt12.Enabled := True;
   dtp1.Enabled := True;
+end;
+
+procedure TForm1.btn2Click(Sender: TObject);
+begin
+if edt1.Text =''then
+begin
+  ShowMessage('NAMA SISWA TIDAK BOLEH KOSONG');
+  end else
+if edt2.Text =''then
+begin
+  ShowMessage('KELAS TIDAK BOLEH KOSONG');
+  end else
+if edt3.Text =''then
+begin
+  ShowMessage('NAMA WALI KELAS TIDAK BOLEH KOSONG');
+  end else
+if edt4.Text =''then
+begin
+  ShowMessage('NAMA ORANG TUA SISWA TIDAK BOLEH KOSONG');
+  end else
+if edt5.Text =''then
+begin
+  ShowMessage('NAMA POINT TIDAK BOLEH KOSONG');
+  end else
+if edt6.Text =''then
+begin
+  ShowMessage('NAMA KETERANGAN TIDAK BOLEH KOSONG');
+  end else
+if edt7.Text =''then
+begin
+  ShowMessage('TOTAL POINT TIDAK BOLEH KOSONG');
+  end else
+begin
+  //simpan
+end;
+
+zqry1.SQL.Clear;
+zqry1.SQL.Add('insert into table_catatan values(null,"'+formatdatetime('yyyy-mm-dd',dtp1.date)+'","'+edt1.text+'","'+edt2.text+'","'+edt3.text+'","'+edt4.text+'","'+edt5.text+'","'+edt6.text+'","'+edt7.text+'")');
+zqry1.ExecSQL;
+
+zqry1.SQL.Clear;
+zqry1.SQL.Add('select * from table_catatan');
+zqry1.Open;
+ShowMessage('Data Berhasil Disimpan');
+posisiawal;
 end;
 
 end.
