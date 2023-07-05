@@ -33,6 +33,7 @@ type
     btn5: TButton;
     btn6: TButton;
     dbgrd1: TDBGrid;
+    procedure btn1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,5 +46,27 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TForm1.btn1Click(Sender: TObject);
+begin
+btn1.Enabled := False;
+  btn2.Enabled := True;
+  btn3.Enabled := False;
+  btn4.Enabled := False;
+  btn5.Enabled := True;
+  edt1.Enabled := True;
+  edt2.Enabled := True;
+  edt3.Enabled := True;
+  edt4.Enabled := True;
+  edt5.Enabled := True;
+  edt6.Enabled := True;
+  edt7.Enabled := True;
+  edt8.Enabled := True;
+  edt9.Enabled := True;
+  edt10.Enabled := True;
+  edt11.Enabled := True;
+  edt12.Enabled := True;
+  dtp1.Enabled := True;
+end;
 
 end.
