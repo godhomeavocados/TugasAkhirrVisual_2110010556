@@ -3,6 +3,7 @@ object Form1: TForm1
   Top = 167
   Width = 928
   Height = 480
+  VertScrollBar.Position = 39
   Caption = 'Form1'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,14 +17,14 @@ object Form1: TForm1
   TextHeight = 13
   object lbl1: TLabel
     Left = 320
-    Top = 8
+    Top = -31
     Width = 63
     Height = 13
     Caption = 'DATA SISWA'
   end
   object pnl1: TPanel
     Left = 56
-    Top = 24
+    Top = -15
     Width = 649
     Height = 321
     TabOrder = 0
@@ -244,14 +245,16 @@ object Form1: TForm1
       Height = 25
       Caption = 'HAPUS'
       TabOrder = 16
+      OnClick = btn4Click
     end
     object btn5: TButton
       Left = 440
       Top = 232
       Width = 75
       Height = 25
-      Caption = 'BATA'
+      Caption = 'BATAL'
       TabOrder = 17
+      OnClick = btn5Click
     end
     object btn6: TButton
       Left = 536
@@ -264,7 +267,7 @@ object Form1: TForm1
   end
   object dbgrd1: TDBGrid
     Left = 56
-    Top = 360
+    Top = 321
     Width = 649
     Height = 120
     TabOrder = 1
