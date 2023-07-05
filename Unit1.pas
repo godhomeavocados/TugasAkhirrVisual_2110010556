@@ -52,6 +52,7 @@ type
     procedure posisiawal;
     procedure FormCreate(Sender: TObject);
     procedure btn2Click(Sender: TObject);
+    procedure dbgrd1CellClick(Column: TColumn);
   private
     { Private declarations }
   public
@@ -178,6 +179,43 @@ zqry1.SQL.Add('select * from data_siswa');
 zqry1.Open;
 ShowMessage('Data Berhasil Disimpan');
 posisiawal;
+end;
+
+procedure TForm1.dbgrd1CellClick(Column: TColumn);
+begin
+id:=zqry1.Fields[0].AsString;
+edt1.Text := zqry1.FieldList[1].AsString;
+edt2.Text := zqry1.FieldList[2].AsString;
+edt3.Text := zqry1.FieldList[3].AsString;
+edt4.Text := zqry1.FieldList[4].AsString;
+edt5.Text := zqry1.FieldList[5].AsString;
+dtp1.Date := zqry1.FieldList[6].AsDateTime;
+edt6.Text := zqry1.FieldList[7].AsString;
+edt7.Text := zqry1.FieldList[8].AsString;
+edt8.Text := zqry1.FieldList[9].AsString;
+edt9.Text := zqry1.FieldList[10].AsString;
+edt10.Text := zqry1.FieldList[11].AsString;
+edt11.Text := zqry1.FieldList[12].AsString;
+edt12.Text := zqry1.FieldList[13].AsString;
+
+  btn1.Enabled := False;
+  btn2.Enabled := False;
+  btn3.Enabled := True;
+  btn4.Enabled := True;
+  btn5.Enabled := True;
+  edt1.Enabled := True;
+  edt2.Enabled := True;
+  edt3.Enabled := True;
+  edt4.Enabled := True;
+  edt5.Enabled := True;
+  edt6.Enabled := True;
+  edt7.Enabled := True;
+  edt8.Enabled := True;
+  edt9.Enabled := True;
+  edt10.Enabled := True;
+  edt11.Enabled := True;
+  edt12.Enabled := True;
+  dtp1.Enabled := True;
 end;
 
 end.
