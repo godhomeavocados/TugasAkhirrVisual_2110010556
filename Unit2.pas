@@ -33,6 +33,7 @@ type
     btn5: TButton;
     btn6: TButton;
     procedure btn1Click(Sender: TObject);
+    procedure btn2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,5 +63,55 @@ btn1.Enabled := False;
   edt6.Enabled := True;
   edt7.Enabled := True;
 end;
+
+procedure TForm1.btn2Click(Sender: TObject);
+begin
+if edt1.Text =''then
+begin
+  ShowMessage('NIK TIDAK BOLEH KOSONG');
+  end else
+if edt2.Text =''then
+begin
+  ShowMessage('NAMA TIDAK BOLEH KOSONG');
+  end else
+if edt3.Text =''then
+begin
+  ShowMessage('JENIS KELAMIN TIDAK BOLEH KOSONG');
+  end else
+if edt4.Text =''then
+begin
+  ShowMessage('PENDIDIKAN TIDAK BOLEH KOSONG');
+  end else
+if edt5.Text =''then
+begin
+  ShowMessage('MATA PELAJARAN TIDAK BOLEH KOSONG');
+  end else
+if edt6.Text =''then
+begin
+  ShowMessage('KELAS TIDAK BOLEH KOSONG');
+  end else
+if edt7.Text =''then
+begin
+  ShowMessage('JABATAN TIDAK BOLEH KOSONG');
+  end else
+if edt8.Text =''then
+begin
+  ShowMessage('NO TELPON TIDAK BOLEH KOSONG');
+  end else
+begin
+  //simpan
+end;
+
+zqry1.SQL.Clear;
+zqry1.SQL.Add('insert into data_wali_kelas values(null,"'+edt1.text+'","'+edt2.text+'","'+edt3.text+'","'+edt4.text+'","'+edt5.text+'","'+edt6.text+'","'+edt7.text+'","'+edt8.text+'")');
+zqry1.ExecSQL;
+
+zqry1.SQL.Clear;
+zqry1.SQL.Add('select * from data_wali_kelas');
+zqry1.Open;
+ShowMessage('Data Berhasil Disimpan');
+posisiawal;
+end;
+
 
 end.
