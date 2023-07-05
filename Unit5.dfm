@@ -78,6 +78,7 @@ object Form5: TForm5
       Height = 25
       Caption = 'BARU'
       TabOrder = 3
+      OnClick = btn1Click
     end
     object btn2: TButton
       Left = 200
