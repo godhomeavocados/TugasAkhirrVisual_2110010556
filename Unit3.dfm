@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 192
-  Top = 156
+  Left = 185
+  Top = 173
   Width = 928
   Height = 480
   Caption = 'Form1'
@@ -11,6 +11,7 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
@@ -172,6 +173,7 @@ object Form1: TForm1
       Height = 25
       Caption = 'UBAH'
       TabOrder = 10
+      OnClick = btn3Click
     end
     object btn4: TButton
       Left = 408
@@ -203,11 +205,68 @@ object Form1: TForm1
     Top = 352
     Width = 737
     Height = 120
+    DataSource = ds1
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+  end
+  object con1: TZConnection
+    ControlsCodePage = cGET_ACP
+    UTF8StringsAsWideField = False
+    AutoEncodeStrings = False
+    Connected = True
+    HostName = 'localhost'
+    Port = 3306
+    Database = 'laporan_siswa'
+    User = 'root'
+    Protocol = 'mysql'
+    LibraryLocation = 'C:\Program Files (x86)\Borland\tugasakhirr\libmysql.dll'
+    Left = 816
+    Top = 40
+  end
+  object zqry1: TZQuery
+    Connection = con1
+    Active = True
+    SQL.Strings = (
+      'select * from tabel_catatan')
+    Params = <>
+    Left = 816
+    Top = 96
+  end
+  object frxdbdtst1: TfrxDBDataset
+    UserName = 'frxdbdtst1'
+    CloseDataSource = False
+    DataSet = zqry1
+    Left = 816
+    Top = 240
+  end
+  object frxrprt1: TfrxReport
+    Version = '4.0.11'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 45112.642573136570000000
+    ReportOptions.LastChange = 45112.642573136570000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 816
+    Top = 192
+    Datasets = <>
+    Variables = <>
+    Style = <>
+  end
+  object ds1: TDataSource
+    DataSet = zqry1
+    Left = 816
+    Top = 152
   end
 end
