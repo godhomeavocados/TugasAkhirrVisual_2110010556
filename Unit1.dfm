@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 226
-  Top = 167
+  Left = 254
+  Top = 129
   Width = 928
   Height = 480
   VertScrollBar.Position = 39

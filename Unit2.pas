@@ -4,7 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls;
+  Dialogs, StdCtrls, ExtCtrls, Grids, DBGrids, frxClass, frxDBSet, DB,
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, ZAbstractConnection,
+  ZConnection;
 
 type
   TForm1 = class(TForm)
@@ -29,12 +31,24 @@ type
     btn1: TButton;
     btn2: TButton;
     btn3: TButton;
-    btn4: TButton;
     btn5: TButton;
     btn6: TButton;
+    btn4: TButton;
+    con1: TZConnection;
+    zqry1: TZQuery;
+    ds1: TDataSource;
+    frxrprt1: TfrxReport;
+    frxdbdtst1: TfrxDBDataset;
+    dbgrd1: TDBGrid;
+    procedure posisiawal;
     procedure btn1Click(Sender: TObject);
     procedure btn2Click(Sender: TObject);
     procedure btn3Click(Sender: TObject);
+    procedure btn4Click(Sender: TObject);
+    procedure btn5Click(Sender: TObject);
+    procedure btn6Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure bersih;
   private
     { Private declarations }
   public
@@ -42,6 +56,7 @@ type
   end;
 
 var
+  id:string;
   Form1: TForm1;
 
 implementation
@@ -125,13 +140,40 @@ end else
 begin
   ShowMessage('Data Berhasil Di Update');
   zqry1.SQL.Clear;
-  zqry1.SQL.Add('Update data_wali_kelas set nik="'+edt1.Text+'",nama="'+edt2.Text+'",jenis_kelamin="'+edt3.Text+'",pendidikan="'+edt4.Text+'",Mata_pelajaran="'+edt5.Text+'",tingkat_kelas="'+edt6.Text+'",jabatan="'+edt7.Text+'",no_telpon="'+edt8.Text+'" where id ="'+id+'"');
+  zqry1.SQL.Add('Update data_wali_kelas set nik="'+edt1.Text+'",nama="'+edt2.Text+'",jenis_kelamin="'+edt3.Text+'",pendidikan="'+edt4.Text+'",mata_pelajaran="'+edt5.Text+'",tingkat_kelas="'+edt6.Text+'",jabatan="'+edt7.Text+'",no_telpon="'+edt8.Text+'" where id ="'+id+'"');
   zqry1.ExecSQL;
 
   zqry1.SQL.Clear;
   zqry1.SQL.Add('select*from data_wali_kelas');
   zqry1.Open;
   posisiawal;
+end;
+procedure TForm1.btn4Click(Sender: TObject);
+begin
+if MessageDlg('Apakah Anda Yakin Menghapus Data Ini?',mtWarning,[mbYes,mbNo],0)= mryes then
+begin
+  zqry1.SQL.Clear;
+  zqry1.SQL.Add('delete from data_wali_kelas where id ="'+id+'"');
+  zqry1.ExecSQL;
+  zqry1.SQL.Clear;
+  zqry1.SQL.Add('select * from data_wali_kelas');
+  zqry1.Open;
+  ShowMessage('Data Berhasil Dihapus');
+  posisiawal;
+end else
+begin
+  ShowMessage('Data Batal Dihapus');
+  posisiawal;
+end;
+
+procedure TForm1.btn5Click(Sender: TObject);
+begin
+bersih;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+posisiawal;
 end;
 
 end.

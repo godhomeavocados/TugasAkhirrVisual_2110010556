@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 192
-  Top = 156
+  Left = 248
+  Top = 180
   Width = 928
   Height = 480
   Caption = 'Form1'
@@ -11,6 +11,7 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object lbl5: TLabel
@@ -173,21 +174,14 @@ object Form1: TForm1
       TabOrder = 10
       OnClick = btn3Click
     end
-    object btn4: TButton
-      Left = 344
-      Top = 224
-      Width = 75
-      Height = 25
-      Caption = 'HAPUS'
-      TabOrder = 11
-    end
     object btn5: TButton
       Left = 432
       Top = 224
       Width = 75
       Height = 25
       Caption = 'BATAL'
-      TabOrder = 12
+      TabOrder = 11
+      OnClick = btn5Click
     end
     object btn6: TButton
       Left = 520
@@ -195,7 +189,85 @@ object Form1: TForm1
       Width = 75
       Height = 25
       Caption = 'LAPORAN'
-      TabOrder = 13
+      TabOrder = 12
+      OnClick = btn6Click
     end
+    object btn4: TButton
+      Left = 336
+      Top = 224
+      Width = 75
+      Height = 25
+      Caption = 'HAPUS'
+      TabOrder = 13
+      OnClick = btn4Click
+    end
+    object dbgrd1: TDBGrid
+      Left = 32
+      Top = 264
+      Width = 593
+      Height = 120
+      DataSource = ds1
+      TabOrder = 14
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+    end
+  end
+  object con1: TZConnection
+    ControlsCodePage = cGET_ACP
+    UTF8StringsAsWideField = False
+    AutoEncodeStrings = False
+    Connected = True
+    HostName = 'localhost'
+    Port = 3306
+    Database = 'laporan_siswa'
+    User = 'root'
+    Protocol = 'mysql'
+    LibraryLocation = 'C:\Program Files (x86)\Borland\tugasakhirr\libmysql.dll'
+    Left = 800
+    Top = 112
+  end
+  object zqry1: TZQuery
+    Connection = con1
+    Active = True
+    SQL.Strings = (
+      'select * from data_wali_kelas')
+    Params = <>
+    Left = 800
+    Top = 168
+  end
+  object ds1: TDataSource
+    DataSet = zqry1
+    Left = 800
+    Top = 224
+  end
+  object frxrprt1: TfrxReport
+    Version = '4.0.11'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 45112.602768923610000000
+    ReportOptions.LastChange = 45112.602768923610000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 800
+    Top = 280
+    Datasets = <>
+    Variables = <>
+    Style = <>
+  end
+  object frxdbdtst1: TfrxDBDataset
+    UserName = 'frxdbdtst1'
+    CloseDataSource = False
+    Left = 800
+    Top = 336
   end
 end
