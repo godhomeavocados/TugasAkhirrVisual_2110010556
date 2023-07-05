@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 192
-  Top = 156
+  Left = 177
+  Top = 189
   Width = 928
   Height = 480
   Caption = 'Form2'
@@ -207,6 +207,7 @@ object Form2: TForm2
     Top = 344
     Width = 729
     Height = 120
+    DataSource = ds1
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -218,11 +219,21 @@ object Form2: TForm2
     ControlsCodePage = cGET_ACP
     UTF8StringsAsWideField = False
     AutoEncodeStrings = False
-    Port = 0
+    Connected = True
+    HostName = 'localhost'
+    Port = 3306
+    Database = 'laporan_siswa'
+    User = 'root'
+    Protocol = 'mysql'
+    LibraryLocation = 'C:\Program Files (x86)\Borland\tugasakhirr\libmysql.dll'
     Left = 832
     Top = 48
   end
   object zqry1: TZQuery
+    Connection = con1
+    Active = True
+    SQL.Strings = (
+      'select * from tabel_ortuatauwali')
     Params = <>
     Left = 832
     Top = 104
@@ -230,11 +241,14 @@ object Form2: TForm2
   object frxdbdtst1: TfrxDBDataset
     UserName = 'frxdbdtst1'
     CloseDataSource = False
+    DataSet = zqry1
     Left = 832
     Top = 240
   end
   object frxrprt1: TfrxReport
     Version = '4.0.11'
+    DataSet = frxdbdtst1
+    DataSetName = 'frxdbdtst1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -255,6 +269,7 @@ object Form2: TForm2
     Style = <>
   end
   object ds1: TDataSource
+    DataSet = zqry1
     Left = 832
     Top = 160
   end

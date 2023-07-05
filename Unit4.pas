@@ -145,11 +145,11 @@ end;
 
 
 zqry1.SQL.Clear;
-zqry1.SQL.Add('insert into table_ortuatauwali values(null,"'+edt1.text+'","'+edt2.text+'","'+edt3.text+'","'+edt4.text+'","'+edt5.text+'","'+edt6.text+'","'+edt7.text+'","'+edt8.text+'")');
+zqry1.SQL.Add('insert into tabel_ortuatauwali values(null,"'+edt1.text+'","'+edt2.text+'","'+edt3.text+'","'+edt4.text+'","'+edt5.text+'","'+edt6.text+'","'+edt7.text+'","'+edt8.text+'")');
 zqry1.ExecSQL;
 
 zqry1.SQL.Clear;
-zqry1.SQL.Add('select * from table_ortuatauwali');
+zqry1.SQL.Add('select * from tabel_ortuatauwali');
 zqry1.Open;
 ShowMessage('Data Berhasil Disimpan');
 posisiawal;
@@ -170,11 +170,11 @@ end else
 begin
   ShowMessage('Data Berhasil Di Update');
   zqry1.SQL.Clear;
-  zqry1.SQL.Add('Update table_ortuatauwali set nik="'+edt1.Text+'",nama="'+edt2.Text+'",jenis_kelamin="'+edt3.Text+'",pendidikan="'+edt4.Text+'",no_telpon="'+edt5.Text+'",alamat="'+edt6.Text+'",pekerjaan="'+edt7.Text+'",status="'+edt8.Text+'" where id ="'+id+'"');
+  zqry1.SQL.Add('Update tabel_ortuatauwali set nik="'+edt1.Text+'",nama="'+edt2.Text+'",jenis_kelamin="'+edt3.Text+'",pendidikan="'+edt4.Text+'",no_telpon="'+edt5.Text+'",alamat="'+edt6.Text+'",pekerjaan="'+edt7.Text+'",status="'+edt8.Text+'" where id ="'+id+'"');
   zqry1.ExecSQL;
 
   zqry1.SQL.Clear;
-  zqry1.SQL.Add('select*from table_ortuatauwali');
+  zqry1.SQL.Add('select*from tabel_ortuatauwali');
   zqry1.Open;
   posisiawal;
   end;
@@ -185,10 +185,10 @@ begin
 if MessageDlg('Apakah Anda Yakin Menghapus Data Ini?',mtWarning,[mbYes,mbNo],0)= mryes then
 begin
   zqry1.SQL.Clear;
-  zqry1.SQL.Add('delete from data_ortuatauwaki where id ="'+id+'"');
+  zqry1.SQL.Add('delete from tabel_ortuatauwaki where id ="'+id+'"');
   zqry1.ExecSQL;
   zqry1.SQL.Clear;
-  zqry1.SQL.Add('select * from data_ortuatauwali');
+  zqry1.SQL.Add('select * from tabel_ortuatauwali');
   zqry1.Open;
   ShowMessage('Data Berhasil Dihapus');
   posisiawal;
